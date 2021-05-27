@@ -14,7 +14,7 @@ router.post("/saveReminder", Auth, async (req, res) => {
     if (!user) return res.status(400).send("Usuario no autenticado");
     // Si el usuario existe procedemos a registrar
     const reminder = new Reminder({
-        idUsuario: user._id,
+        idUsuario: req.user._id,
         nombreActividad: req.body.nombreActividad,
         descripcion: req.body.descripcion
     });
